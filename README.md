@@ -9,6 +9,14 @@ Input: `Hello, there`
 
 Output: `HELLO, THERE`
 
+answer:
+```swift
+func capitialized (input: String) -> String {
+    return input.uppercased()
+    
+}
+```
+
 2. **Given a String, return a String alternating between uppercase and lowercase letters**
 
 
@@ -16,6 +24,22 @@ Input: `Hello, there`
 
 Output: `HeLlO, tHeRe`
 
+answer:
+```swift
+func capitializedAlternating (input: String) -> String {
+    
+    var newCaptializedAlternating = String()
+    
+    for (index, char) in input.enumerated() {
+        if index % 2 == 1 {
+            newCaptializedAlternating += char.uppercased()
+        } else {
+            newCaptializedAlternating += char.lowercased()
+        }
+    }
+    return newCaptializedAlternating
+}
+```
 
 3. **Given a String, return a String with all occurrences of a given letter removed**
 
@@ -23,6 +47,13 @@ Input: `Hello, there`
 
 Output: `Hllo, thr`
 
+answer:
+```swift
+func givenAString(input: String, char: Character) -> String {
+    let removedChar = input.filter {$0 != char} // input is a constant
+    return removedChar
+}
+```
 
 ## Arrays
 
@@ -33,11 +64,41 @@ Input: `[1,5,2,4,1,4]`
 
 Output: `5`
 
+answer:
+```swift
+func largestInt (array: [Int]) -> Int {
+    
+    var int = array[0]
+    
+    for num in array {
+        if num > int {
+            int = num
+        }
+    }
+    return int
+}
+```
+
 2. **Given an array of type [Int], return the smallest element**
 
 Input: `[1,5,2,4,1,4]`
 
 Output: `1`
+
+answer:
+```swift
+func smallestInt (array: [Int]) -> Int {
+    
+    var int = array[0]
+    
+    for num in array {
+        if num < int {
+            int = num
+        }
+    }
+    return int
+}
+```
 
 3. **Given an array of type [Int], return its sum**
 
@@ -45,17 +106,52 @@ Input: `[1,5,2,4,1,4]`
 
 Output: `17`
 
+answer:
+```swift
+func sum(array: [Int]) -> Int {
+    return array.reduce(0, +)
+}
+```
+
 4. **Given an array of type [Double], return its average**
 
 Input: `[3,4.5,7.5,2,1]`
 
 Output: `3.6`
 
+answer:
+```swift
+func averageOfDouble(array: [Double]) -> Double {
+    
+    var sum = 0.0
+    for num in array {
+        sum += num
+    }
+    
+    return sum / Double(array.count)
+}
+```
+
 5. **Given an array of type [Double] and a Double, return the sum of all numbers in the array greater than a given number**
 
 Input: `[3,4.5,7.5,2,1], 3`
 
 Output: `12`
+
+answer:
+```swift
+func someFunc(array: [Double], double: Double) -> Double {
+    
+    var sum = 0.0
+    
+    for num in array {
+        if num > double {
+            sum += num
+        }
+    }
+    return sum
+}
+```
 
 
 6. **Given an array of type [Double], return the product of all the elements**
@@ -64,11 +160,31 @@ Input: `[3,4.5,7.5,2,1]`
 
 Output: `202.5`
 
+answer:
+```swift
+func productOfAll(array: [Double]) -> Double {
+    
+    var total = 1.0
+    
+    for num in array {
+        total *= num
+    }
+    return total
+}
+```
+
 7. **Given an array of type [Int], return the second smallest value in the array**
 
 Input: `[3,6,1,9,4,8]`
 
 Output: `3`
+
+answer:
+```swift
+func secondSmallestValue(array: [Int]) -> Int {
+    array.sorted()[1]
+}
+```
 
 ## Optionals
 
@@ -77,6 +193,13 @@ Output: `3`
 Input: `[nil, "We", "come", nil, "in", "peace"]`
 
 Output: `["We", "come", "in", "peace"]`
+
+answer:
+```swift
+func whatIfs(array: [String?]) -> [String]{
+    return array.compactMap{$0}
+}
+```
 
 2. **Given an array of type [String?]? return an array of [String] removing all nil values**
 
@@ -110,6 +233,13 @@ Output: `24`
 Input: `["apple", "apple", "banana", "banana", "banana", "cake", "cake"]`
 
 Output: `["apple", "banana", "cake"]`
+
+answer:
+```swift
+func dictionary1(array: [String]) -> [String] {
+    return Array(Set(array)).sorted()
+}
+```
 
 2. **Given a String, find the most frequently occurring letter**
 
