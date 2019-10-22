@@ -246,6 +246,18 @@ Output: `0`
 
 answer:
 ```swift
+func aFunction(array: [Int?]?) -> Int {
+
+    var sum = 0
+    guard array != nil else {
+        return
+    }
+    guard array = array else {
+            sum += array.compactMap{$0}
+        }
+    }
+    return sum
+}
 ```
 
 5. **Given an array of type [Int?] and an optional Int, return the sum of all values not equal to the given number.  If the given number is nil, return the sum of all non-nil values.**
@@ -295,7 +307,9 @@ Output: `t`
 
 answer:
 ```swift
+func frequentLetter(aString: String) -> Character {
 
+}
 ```
 
 3. **Given an array of type [Int], return a copy of the array that contains only elements that appear at least twice**
@@ -306,6 +320,14 @@ Output: `[1,3,6]`
 
 answer:
 ```swift
+func containsTwice(array: [Int]) -> [Int] {
+
+    var emptyDictionary = [:]
+    for num in array {
+        if emptyDictionary[num] ==
+
+        }
+}
 ```
 
 4. **Given a String, find the second most frequently occurring letter in a string**
@@ -316,6 +338,13 @@ Output `o`
 
 answer:
 ```swift
+func function0(string: String) -> Character {
+    
+    var joinedString = string.replacingOccurrences(of: " ", with: "")
+    for (key, value) in joinedString { // how to create dictionary [Character: Int] from a string without any spaces?
+        
+    }
+}
 ```
 
 ## Closures
@@ -409,6 +438,36 @@ enum NumberType {
     case even
     case odd
 }
+func function7(array: [Int], instance: NumberType) -> [Int] {
+    
+    var oddArray = [Int]()
+    var evenArray = [Int]()
+    
+    for num in array {
+        if num % 2 == 1 {
+            oddArray.append(num)
+        } else {
+            evenArray.append(num)
+        }
+    }
+    
+    if instance == NumberType.odd {
+        return oddArray
+    } else {
+        return evenArray
+    }
+}
+
+// OR
+
+func function8(array: [Int], instance: NumberType) -> [Int] {
+    switch instance {
+    case .even:
+        return array.filter({$0 % 2 == 0 })
+    case .odd:
+        return array.filter({$0 % 2 == 1 })
+    }
+}
 ```
 
 Input: `[1,2,3,4,5,6], NumberType.odd`
@@ -421,6 +480,15 @@ Output: `[1,3,5]`
 enum StringType {
     case lowercase
     case uppercase
+}
+func function9(string: String, instance: StringType) -> String {
+    
+    switch instance {
+    case .lowercase:
+        return string.lowercased()
+    case .uppercase:
+        return string.uppercased()
+    }
 }
 ```
 
@@ -449,4 +517,19 @@ Output: `[File that has been saved 5 times, File that has been saved 8 times]`
 
 answer:
 ```swift
+func function10(array:[FileStatus], num: Int) -> [FileStatus] {
+    var newArray2 = [FileStatus]()
+    
+    for element in array {
+        switch element {
+        case .saved(let numOfVersions):
+            if numOfVersions > num {
+                newArray2.append(element)
+            }
+        case .unsaved:
+            continue
+        }
+    }
+    return newArray2
+}
 ```
