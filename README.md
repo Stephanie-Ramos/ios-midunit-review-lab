@@ -127,7 +127,6 @@ func averageOfDouble(array: [Double]) -> Double {
     for num in array {
         sum += num
     }
-    
     return sum / Double(array.count)
 }
 ```
@@ -207,11 +206,37 @@ Input: `nil`
 
 Output: `[]`
 
+answer:
+```swift
+func whatIfs2(array: [String?]?) -> [String] { 
+    
+    var newArray: [String] = []
+    if let unwrappedString = array {
+        newArray = unwrappedString.compactMap{$0}
+    }
+    return newArray
+}
+```
+
 3. **Given an array of type [Int?] return the sum of all non-nil values.  Use guard statements in your solution.**
 
 Input: `[4, nil, 9, 5, nil]`
 
 Output: `18`
+
+answer:
+```swift
+func whatIfs3(array: [Int?]) -> Int {
+    var sum = 0
+    for num in array {
+        guard let aNumber = num else {
+            continue
+        }
+        sum += aNumber
+    }
+    return sum
+}
+```
 
 4. **Given an array of type [Int?]? return the sum of all non-nil values.  Use guard statements in your solution.**
 
@@ -219,11 +244,32 @@ Input: `nil`
 
 Output: `0`
 
+answer:
+```swift
+```
+
 5. **Given an array of type [Int?] and an optional Int, return the sum of all values not equal to the given number.  If the given number is nil, return the sum of all non-nil values.**
 
 Input: `[1, 1, nil, 3, 5, nil, 1, nil, 3, 5, nil, 5, nil, 3], 1`
 
 Output: `24`
+
+answer:
+```swift
+func whatIfs4(array: [Int?], int: Int?) -> Int {
+    
+    var sum = 0
+    
+    for num in array {
+        if let unwrappedNum = num {
+            if unwrappedNum != int {
+                sum += unwrappedNum
+            }
+        }
+    }
+    return sum
+}
+```
 
 
 ## Dictionaries
@@ -247,11 +293,20 @@ Input: `Never trust a computer you can't throw out a window ~ Steve Wozniak`
 
 Output: `t`
 
+answer:
+```swift
+
+```
+
 3. **Given an array of type [Int], return a copy of the array that contains only elements that appear at least twice**
 
 Input: `[1,1,2,3,3,3,4,5,6,6,7]`
 
 Output: `[1,3,6]`
+
+answer:
+```swift
+```
 
 4. **Given a String, find the second most frequently occurring letter in a string**
 
@@ -259,6 +314,9 @@ Input: `Never trust a computer you can't throw out a window ~ Steve Wozniak`
 
 Output `o`
 
+answer:
+```swift
+```
 
 ## Closures
 
@@ -268,11 +326,25 @@ Input: `["Never", "trust", "a", "computer", "you", "can't", "throw", "out", "a",
 
 Output: `["Never", "a", "a", "can\'t", "computer", "out", "throw", "trust", "window", "you"]`
 
+answer:
+```swift
+func function1(array: [String]) -> [String] {
+    return array.sorted{ $0 < $1 }
+}
+```
+
 2. **Given an array of type [String], return an array that contains the Strings sorted by length**
 
 Input: `["Never", "trust", "a", "computer", "you", "can't", "throw", "out", "a", "window"]`
 
 Output: `["a", "a", "you", "out", "Never", "trust", "can\'t", "throw", "window", "computer"]`
+
+answer:
+```swift
+func function2(array:[String]) -> [String] {
+    return array.sorted(by: {$0.count < $1.count})
+}
+```
 
 3. **Given an array of type [String], return an array containing all Strings at least 4 characters long**
 
@@ -280,11 +352,51 @@ Input: `["Never", "trust", "a", "computer", "you", "can't", "throw", "out", "a",
 
 Output: `["Never", "trust", "computer", "can\'t", "throw", "window"]`
 
+answer:
+```swift
+func function3(array: [String]) -> [String] {
+   
+    var newFunction3 = [String]()
+    for num in array {
+        if num.count > 4 {
+            newFunction3.append(num)
+        }
+    }
+    return newFunction3
+}
+
+// OR 
+
+func function4(array: [String]) -> [String] {
+    return array.filter{$0.count > 4}
+}
+```
+
 4. **Given an array of type [String], return a String containing all of the Strings from the array combined and separated by spaces.  Do this first without using the `joined(separator:) method`**
 
 Input: `["Never", "trust", "a", "computer", "you", "can't", "throw", "out", "a", "window"]`
 
 Output: `Never trust a computer you can't throw out a window`
+
+answer:
+```swift
+func function5(array: [String]) -> String {
+    var newArray = String()
+    for element in array {
+        newArray += element + " "
+    }
+    newArray.removeLast()
+    return newArray
+}
+
+// OR 
+
+func function6(array: [String]) -> String {
+   var newArray1 = String()
+    array.forEach{element in newArray1.append(element + " ") }
+    return newArray1
+}
+```
 
 
 ## Enums
@@ -334,3 +446,7 @@ enum FileStatus: CustomStringConvertible {
 Input: `[FileStatus.saved(numberOfVersions: 5), FileStatus.saved(numberOfVersions: 3), FileStatus.saved(numberOfVersions: 8)], 4`
 
 Output: `[File that has been saved 5 times, File that has been saved 8 times]`
+
+answer:
+```swift
+```
