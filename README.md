@@ -247,17 +247,15 @@ Output: `0`
 answer:
 ```swift
 func aFunction(array: [Int?]?) -> Int {
-
+    
     var sum = 0
+    
     guard array != nil else {
-        return
-    }
-    guard array = array else {
-            sum += array.compactMap{$0}
-        }
+        return sum += (array?.compactMap{$0 != nil})!
     }
     return sum
 }
+// error: Cannot convert value of type '[Bool]' to expected argument type 'Int'
 ```
 
 5. **Given an array of type [Int?] and an optional Int, return the sum of all values not equal to the given number.  If the given number is nil, return the sum of all non-nil values.**
