@@ -308,7 +308,25 @@ Output: `t`
 answer:
 ```swift
 func frequentLetter(aString: String) -> Character {
-
+    var finalDictionary = [Character: Int]()
+    for char in myString {
+        if let value = finalDictionary[char] {
+            finalDictionary[char] = value + 1 
+        } else {
+            finalDictionary[char] = 1 
+        }
+    }
+    
+    var mostFrequentChar = ""
+    var mostTimes = 0
+    
+    for (key, value) in finalDictionary { 
+        if value > mostTimes {
+            mostFrequentChar = key.description 
+            mostTimes = value
+        }
+    }
+    return Character(mostFrequentChar)
 }
 ```
 
@@ -321,12 +339,23 @@ Output: `[1,3,6]`
 answer:
 ```swift
 func containsTwice(array: [Int]) -> [Int] {
-
-    var emptyDictionary = [:]
-    for num in array {
-        if emptyDictionary[num] ==
-
+    
+    var emptyDictionary = [Int:Int]()
+    var elementsThatAppearAtLeastTwice = [Int]()
+    
+    for key in array {
+        if let value = emptyDictionary[key] { // if this is not a nil
+            emptyDictionary[key] = value + 1  // how to break once it has a duplicate
+        } else {
+            emptyDictionary[key] = 1
         }
+    }
+    for (key, value) in emptyDictionary {
+        if value >= 2 {
+            elementsThatAppearAtLeastTwice.append(key)
+        }
+    }
+    return elementsThatAppearAtLeastTwice
 }
 ```
 
@@ -339,11 +368,28 @@ Output `o`
 answer:
 ```swift
 func function0(string: String) -> Character {
+
+    var emptyDictionary = [Character:Int]()
     
-    var joinedString = string.replacingOccurrences(of: " ", with: "")
-    for (key, value) in joinedString { // how to create dictionary [Character: Int] from a string without any spaces?
-        
+    let joinedString = string.replacingOccurrences(of: " ", with: "")
+    for char in joinedString {
+        if let value = emptyDictionary[char] {
+            emptyDictionary[char] = value + 1
+        } else {
+            emptyDictionary[char] = 1
+        }
     }
+    
+    var mostFrequentChar = ""
+    var mostTimes = 0
+    
+    for (key, value) in emptyDictionary {
+        if value > mostTimes {
+            mostFrequentChar = key.description
+            mostTimes = value
+        }
+    }
+    return Character(mostFrequentChar)
 }
 ```
 
